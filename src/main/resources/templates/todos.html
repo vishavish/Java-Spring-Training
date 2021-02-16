@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">BOOTCAMP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <!---
+                    li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" th:if="${not #lists.isEmpty(todoList)}">
+        <div class="row pb-3 pt-3">
+            <div class="col-md-6">
+                <h2>Todo List</h2>
+            </div>
+            <div class="col-md-6 ">
+                <button class="btn btn-primary float-right">Create</button>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="todo : ${todoList}">
+                    <td th:text="${todo.id}"></td>
+                    <td th:text="${todo.name}"></td>
+                    <td th:text="${todo.getStatus() } ? 'Done' : 'Not Done'"></td>
+                    <td>
+                        <button>Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
