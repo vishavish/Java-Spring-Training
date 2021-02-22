@@ -1,29 +1,45 @@
 package com.bootcamp.springboot.model;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = "Todo")
 public class Todo {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
+    private long  id;
+
+    @Column(name = "Name")
     private String name;
+
+    @Column(name = "Status")
     private Boolean isDone;
 
-    public Todo(Integer _id, String _name) {
-        this.id = _id;
-        this.name = _name;
-        this.isDone = false;
+    public Todo() {
     }
 
-    public Integer getId() {
+    public Todo(long id, String name, Boolean status) {
+        this.id = id;
+        this.name = name;
+        this.isDone = status;
+    }
+
+    public long  getId() {
         return this.id;
     }
 
-    public void setId(Integer _id) {
-        this.id = _id;
+    public void setId(long  id) {
+        this.id = id;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public void setName(String _name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -31,7 +47,7 @@ public class Todo {
         return this.isDone;
     }
 
-    public void setStatus(Boolean _status) {
-        this.isDone  = _status;
+    public void setStatus(Boolean status) {
+        this.isDone  = status;
     }
 }

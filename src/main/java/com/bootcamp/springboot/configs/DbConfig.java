@@ -6,20 +6,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@ConfigurationProperties("db")
+@ConfigurationProperties("spring.datasource")
 public class DbConfig {
 
-    private String serverName;
+    private String url;
     private String username;
     private String password;
-    private String database;
+    private String driverClassName;
 
     public String getServer() {
-        return this.serverName;
+        return this.url;
     }
 
     public void setServer(String _serverName) {
-        this.serverName = _serverName;
+        this.url = _serverName;
     }
 
     public String getUsername() {
@@ -39,11 +39,11 @@ public class DbConfig {
     }
 
     public String getDatabase() {
-        return this.database;
+        return this.driverClassName;
     }
 
     public void setDatabase(String _database) {
-        this.database = _database;
+        this.driverClassName = _database;
     }
 
     @Profile("dev")

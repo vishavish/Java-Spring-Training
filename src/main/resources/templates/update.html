@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css} "/>
+</head>
+<body>
+<div class="container">
+    <br />
+    <br />
+    <h3 class="mb-4">Update Todo</h3>
+    <form action="#" th:action="@{/todos/update/{id}(id=${todo.id})}" th:object="${todo}" method="post">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <label for="id">Id</label>
+                    <input type="text" class="form-control" th:field="${todo.id}" id="id" placeholder="Id" disabled>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" th:field="${todo.name}" id="name" placeholder="Name">
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="form-group">
+                    <label for="exampleCheck1">Done</label><br />
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" th:field="${todo.status}">
+                </div>
+            </div>
+
+        </div>
+        <input type="submit" class="btn btn-primary" value="Update"></input>
+        <a type="button" class="btn btn-secondary" th:href="@{/todos/list}">Cancel</a>
+    </form>
+</div>
+</body>
+</html>
